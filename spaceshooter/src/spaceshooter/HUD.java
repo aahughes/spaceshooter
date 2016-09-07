@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,12 +29,11 @@ public class HUD {
     
     
     public void tick(){
-     
-      
-        HEALTH = Game.clamp(HEALTH, 0, 100);
-        greenVal = Game.clamp(greenVal,0,255);
-        greenVal = HEALTH*2;
-        c.tick();
+          
+       HEALTH = Game.clamp(HEALTH, 0, 100);
+       greenVal = Game.clamp(greenVal,0,255);
+       greenVal = HEALTH*2;
+       c.tick();
        score++;
        seconds = c.deltaSeconds;
        minutes = c.deltaMinutes;
@@ -64,10 +63,8 @@ public class HUD {
     }
     public int getLevel(){
         return level;
-        
     }
     public void setLevel(int level){
         this.level = level;
     }
-    
 }

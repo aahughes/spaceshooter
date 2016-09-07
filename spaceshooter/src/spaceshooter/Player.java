@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -51,20 +51,18 @@ public class Player extends GameObject{
            if(tempObject.getID() == ID.BasicLaser){
                //collision code
                
-                if(getBounds().intersects(tempObject.getBounds())){
+               if(getBounds().intersects(tempObject.getBounds())){
                HUD.HEALTH -= 5;    
-               }
-               
+               }  
            }
        }
    }
     @Override
     public void render(Graphics g) {
-        
         g.setColor(Color.white);
         g.fillRect(x,y,32,32);
-      
     }
+    
     @Override
     public Rectangle getBounds() {
         return new Rectangle(x,y,32,32);

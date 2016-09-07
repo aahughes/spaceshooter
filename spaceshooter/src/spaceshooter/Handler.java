@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.Graphics;
 import java.util.LinkedList;
@@ -34,6 +34,7 @@ public class Handler {
             tempObject.render(g);
         }
     }
+    
     public void addObject(GameObject object){
         this.object.add(object);
     }

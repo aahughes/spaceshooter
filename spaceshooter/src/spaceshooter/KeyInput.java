@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -44,11 +44,10 @@ public class KeyInput extends KeyAdapter{
                 // player laster
                 if(key == KeyEvent.VK_SPACE){
                     release++;
-                    if(release == 1) handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler));
-                   
-                    
+                    if(release == 1) handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler));                   
                 }
-            release = 0;
+                
+                release = 0;
             }
         }
         

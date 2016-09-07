@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -23,9 +23,7 @@ public class BasicFighter extends GameObject {
         this.initialX = x;
         this.handler = handler;
         velX = 1;
-        c = new Clock();
-        
-        
+        c = new Clock();     
     }
 
     @Override
@@ -50,9 +48,7 @@ public class BasicFighter extends GameObject {
     public void render(Graphics g) {
         
         g.setColor(Color.RED);
-        g.fillRect(x,y,32,32);
-        
-      
+        g.fillRect(x,y,32,32);      
     }
 
     @Override
@@ -67,26 +63,18 @@ public class BasicFighter extends GameObject {
            GameObject tempPlayerObject;
            GameObject tempObject = handler.object.get(i);
            if(tempObject.getID() == ID.PlayerLaser){
-              tempPlayerObject = tempObject;
-              
+              tempPlayerObject = tempObject;                      
            
-           
-           if(tempObject.getID() == ID.PlayerLaser){
-               //collision code
-               
-              if(getBounds().intersects(tempObject.getBounds())){
-                  
-                   handler.removeObject(this);
-               }
-                
-               }
-           }
-           
-        }
-        
-        
-    }
-    
-    
-    
+                if(tempObject.getID() == ID.PlayerLaser){
+                    //collision code
+
+                   if(getBounds().intersects(tempObject.getBounds())){
+
+                        handler.removeObject(this);
+                    }
+
+                }
+            } 
+        }  
+    } 
 }

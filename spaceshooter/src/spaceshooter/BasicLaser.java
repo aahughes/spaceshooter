@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,6 +21,7 @@ public class BasicLaser extends GameObject {
         this.handler = handler;
         c = new Clock();
     }
+    
     @Override
     public void tick() {
          x += velX;
@@ -37,13 +38,13 @@ public class BasicLaser extends GameObject {
     public void render(Graphics g) {
          g.setColor(Color.RED);
         g.fillRect(x,y,10,10);
-        
     }
 
     @Override
     public Rectangle getBounds() {
          return new Rectangle(x,y,10,10);  
     }
+    
     @Override
     public void collision() {
         
@@ -55,32 +56,28 @@ public class BasicLaser extends GameObject {
            
            if(tempObject.getID() == ID.Player){
               tempPlayerObject = tempObject;
-              
            
-           
-           if(tempObject.getID() == ID.Player){
-               //collision code
-               
-              if(getBounds().intersects(tempObject.getBounds())){
-                  
-                  tempPlayerObject.collision();
-                   handler.removeObject(this);
+                if(tempObject.getID() == ID.Player){
+                    //collision code
+
+                   if(getBounds().intersects(tempObject.getBounds())){
+
+                       tempPlayerObject.collision();
+                        handler.removeObject(this);
                     }
-                
                 }
             }
           outOfBounds();
         }
-        
     }
+    
     private void outOfBounds(){
-              if(x <= 0) handler.removeObject(this);
-              if (x >= WIDTH-34) handler.removeObject(this);
-              if(y <= 0) handler.removeObject(this);
-              if (y >= HEIGHT-54) handler.removeObject(this);
-           
-           
-       }
+        if(x <= 0) handler.removeObject(this);
+        if (x >= WIDTH-34) handler.removeObject(this);
+        if(y <= 0) handler.removeObject(this);
+        if (y >= HEIGHT-54) handler.removeObject(this);
+    }
+    
 }
         
         

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 /**
  *
@@ -23,26 +23,26 @@ public class Clock {
         if(current >= 1000000000){
             delta ++;
         }
-            if(delta >= 60){
-                seconds++;
-                deltaSeconds++;
-                delta = 0;
-            }
-                if(seconds >= 60){
-                    minutes++;
-                    deltaMinutes++;
-                    deltaSeconds = 0;
-                    seconds = 0;
-                }
-                        if(minutes <= 60){
-                            hours++;
-                            minutes = 0;
-                        }
-                
-              
+        
+        if(delta >= 60){
+            seconds++;
+            deltaSeconds++;
+            delta = 0;
         }
         
-    }
+        if(seconds >= 60){
+            minutes++;
+            deltaMinutes++;
+            deltaSeconds = 0;
+            seconds = 0;
+        }
+        
+        if(minutes >= 60){
+            hours++;
+            minutes = 0;
+        }                 
+    }      
+}
                   
     
 

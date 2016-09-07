@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -52,25 +52,17 @@ public class Game extends Canvas implements Runnable {
         c = new Clock();
 
         // test
-       
-       
-        
-       
             
          handler.addObject(new Player(WIDTH/2-32,HEIGHT/2-32,ID.Player,handler));
        
          
-
-
         // test level 1
        for(int i = 0; i <= 5; i++){
            handler.addObject(new BasicFighter((WIDTH + increment)/2-32,HEIGHT/7,ID.BasicFighter,handler));
          //  handler.addObject(new BasicLaser((WIDTH + increment)/2-16,HEIGHT/7,ID.BasicLaser,handler));
-           increment += 200;
-           
+           increment += 200; 
        } 
       
-       
     }
     // start method
     public synchronized void start(){
@@ -113,37 +105,34 @@ public class Game extends Canvas implements Runnable {
                 tick();
                 delta--;
             }
-            if(running)
+            if(running){
                 render();
                 frames++;
-                
-                if(System.currentTimeMillis() - timer > 1000){
-                    timer += 1000;
-                    System.out.println("FPS: "+ frames);
-                    frames = 0;
-                    timer++;
-                  //  System.out.println(c.deltaSeconds);
-                    
-                    
-                    
-                    
-                }
-                if(timer == 100000){
-                    System.out.println(timer);
-                }
+            }
                
-                
+            if(System.currentTimeMillis() - timer > 1000){
+                timer += 1000;
+                System.out.println("FPS: "+ frames);
+                frames = 0;
+                timer++;
+              //  System.out.println(c.deltaSeconds);
+
+            }
+
+            if(timer == 100000){
+                System.out.println(timer);
+            }     
         }
-         stop();
         
+         stop();    
     }
     private void tick(){
         handler.tick();
         hud.tick();
         spawner.tick();
-        c.tick();
-        
+        c.tick();     
     }
+    
     private void render(){
         // main color method for rendering to window, graphics
         BufferStrategy bs = this.getBufferStrategy();
@@ -163,16 +152,15 @@ public class Game extends Canvas implements Runnable {
         
         g.dispose();
         bs.show();
-        
-        
+       
     }
+    
     public static int clamp(int var, int min, int max){
         // boundries of window
         
         if(var >= max)return var = max;
         else if(var <= min) return var = min;
         else return var;
-        
         
     }
  

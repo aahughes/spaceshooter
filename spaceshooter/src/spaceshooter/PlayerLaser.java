@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -53,10 +53,7 @@ public class PlayerLaser extends GameObject{
     public void collision() {
         
         for(int i = 0; i < handler.object.size(); i++){
-            
-            
-            
-            
+
            GameObject tempEnemyObject;
            GameObject tempObject = handler.object.get(i);
            if(tempObject.getID() == ID.BasicFighter){
@@ -66,9 +63,7 @@ public class PlayerLaser extends GameObject{
                   
                   tempEnemyObject.collision();
                    handler.removeObject(this);
-               }
-                
-           
+               }  
            }
            
            // FIX BUG, INDEX OUT OF BOUNDS AFTER REMOVING OBJECT
@@ -76,14 +71,14 @@ public class PlayerLaser extends GameObject{
            outOfBounds();
                  
         }
-       }
-       private void outOfBounds(){
-              if(x <= 0) handler.removeObject(this);
-              if (x >= WIDTH-34) handler.removeObject(this);
-              if(y <= 0) handler.removeObject(this);
-              if (y >= HEIGHT-64) handler.removeObject(this);
-           
-           
-       } 
-        
     }
+    
+    private void outOfBounds(){
+           if(x <= 0) handler.removeObject(this);
+           if (x >= WIDTH-34) handler.removeObject(this);
+           if(y <= 0) handler.removeObject(this);
+           if (y >= HEIGHT-64) handler.removeObject(this);
+
+    } 
+        
+}

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -34,6 +34,7 @@ public abstract class GameObject {
         WIDTH = 800;
         HEIGHT = WIDTH /12 *9;
     }
+    
     // abstract methods
     public abstract void tick();
     public abstract void render(Graphics g);
@@ -47,24 +48,28 @@ public abstract class GameObject {
     public void setY(int y ){
         this.y = y;
     }
+    
     public int getX(){
         return x;
     }
     public int getY(){
         return y;
     }
+    
     public void setID(ID id){
         this.id = id;
     }
     public ID getID(){
         return id;
     }
+    
     public void setVelX(int velX){
         this.velX = velX;
     }
     public void setVelY(int velY){
         this.velY = velY;
     }
+    
     public int getVelX(){
         return velX;
     }

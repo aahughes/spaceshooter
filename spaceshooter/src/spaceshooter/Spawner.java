@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src;
+package spaceshooter;
 
 /**
  *
- * @author ralpoh
+ * @author ralph
  */
 public class Spawner {
     private Handler handler;
@@ -31,8 +31,7 @@ public class Spawner {
   
         seconds = c.deltaSeconds;
          c.tick();
-        }
-    
+    }    
 }   
     
     
