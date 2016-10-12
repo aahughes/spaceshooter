@@ -42,7 +42,7 @@ public class Game extends Canvas implements Runnable {
     public Game(){
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
-        new Window((int)WIDTH,(int)HEIGHT,"StarShooter pre-alpha",this);
+        new GameWindow((int)WIDTH,(int)HEIGHT,"StarShooter pre-alpha",this);
         hud = new HUD();
         spawner = new Spawner(handler, hud);
         // time stuff

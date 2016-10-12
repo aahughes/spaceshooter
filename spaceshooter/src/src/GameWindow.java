@@ -15,12 +15,14 @@ import javax.swing.JFrame;
  * @author ralph
  */
 
-// Main Window for game, implements JFrame, Takes Game as constructor
-public class Window extends JFrame{
+// Main GameWindow for game, implements JFrame, Takes Game as constructor
+public class GameWindow extends JFrame{
     
     private static final double serialVersionID =  1.00;
     
-    public Window(int width, int height, String title, Game game){
+    Game game;
+    
+    public GameWindow(int width, int height, String title, Game game){
         
         this.setPreferredSize(new Dimension(width,height));
         this.setMaximumSize(new Dimension(width,height));
@@ -30,8 +32,17 @@ public class Window extends JFrame{
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         
+        this.game = game;
         this.add(game);
         this.setVisible(true);
+        
+        StartMenu menu = new StartMenu();
+        this.add(menu);
+        menu.setVisible(true);
+        
+    }
+    
+    public void startGame(){
         game.start();
     }
 }
