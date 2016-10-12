@@ -52,8 +52,7 @@ public class Game extends Canvas implements Runnable {
         c = new Clock();
 
         // test
-       
-       
+             
         
        
             
@@ -83,11 +82,7 @@ public class Game extends Canvas implements Runnable {
             e.printStackTrace();
         }
     }
-    
-    public static void main(String[] args) {
-     new Game();
-    }
-
+        
     @Override
     public void run() {
         this.requestFocus();
