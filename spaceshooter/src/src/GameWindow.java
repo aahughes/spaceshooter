@@ -21,6 +21,7 @@ public class GameWindow extends JFrame{
     private static final double serialVersionID =  1.00;
     
     Game game;
+    StartMenu menu;
     
     public GameWindow(int width, int height, String title, Game game){
         
@@ -33,16 +34,16 @@ public class GameWindow extends JFrame{
         this.setLocationRelativeTo(null);
         
         this.game = game;
-        this.add(game);
         this.setVisible(true);
         
-        StartMenu menu = new StartMenu();
+        menu = new StartMenu(this);
         this.add(menu);
-        menu.setVisible(true);
-        
+        menu.setVisible(true);        
     }
     
     public void startGame(){
+        this.add(game);
+        menu.setVisible(false);
         game.start();
     }
 }

@@ -20,7 +20,7 @@ public class Game extends Canvas implements Runnable {
     // main linked list of objects rendered to screen
     private Handler handler;
     // frame size
-    public static final float WIDTH = 800, HEIGHT = WIDTH /12 *9;
+    public static final float WIDTH = 800, HEIGHT = 600;
     // first thread for game
     private Thread thread;
     // main boolean for if the game is running
