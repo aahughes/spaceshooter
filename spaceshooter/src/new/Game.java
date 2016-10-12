@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spaceshooter;
+package src;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -20,14 +20,14 @@ public class Game extends Canvas implements Runnable {
     // main linked list of objects rendered to screen
     private Handler handler;
     // frame size
-    public static final int WIDTH = 800, HEIGHT = WIDTH /12 *9;
+    public static final float WIDTH = 800, HEIGHT = WIDTH /12 *9;
     // first thread for game
     private Thread thread;
     // main boolean for if the game is running
     private boolean running = false;
     // test for randoms
     Random r = new Random();
-    int increment = -400;
+    
     // heads up display, health and shit
     private HUD hud;
     // spawner for levels
@@ -42,7 +42,7 @@ public class Game extends Canvas implements Runnable {
     public Game(){
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
-        new Window(WIDTH,HEIGHT,"StarShooter pre-alpha",this);
+        new Window((int)WIDTH,(int)HEIGHT,"StarShooter pre-alpha",this);
         hud = new HUD();
         spawner = new Spawner(handler, hud);
         // time stuff
@@ -52,22 +52,24 @@ public class Game extends Canvas implements Runnable {
         c = new Clock();
 
         // test
+       
+       
+        
+       
             
          handler.addObject(new Player(WIDTH/2-32,HEIGHT/2-32,ID.Player,handler));
        
          
+
+
         // test level 1
-       for(int i = 0; i <= 5; i++){
-           handler.addObject(new BasicFighter((WIDTH + increment)/2-32,HEIGHT/7,ID.BasicFighter,handler));
-         //  handler.addObject(new BasicLaser((WIDTH + increment)/2-16,HEIGHT/7,ID.BasicLaser,handler));
-           increment += 200; 
-       } 
+        
       
+       
     }
     // start method
     public synchronized void start(){
         thread = new Thread(this);
-      //                  System.out.println("this");
         thread.start();
         running = true;
     }
@@ -106,34 +108,38 @@ public class Game extends Canvas implements Runnable {
                 tick();
                 delta--;
             }
-            if(running){
+            if(running)
                 render();
                 frames++;
-            }
+                
+                if(System.currentTimeMillis() - timer > 1000){
+                    timer += 1000;
+                    System.out.println("FPS: "+ frames);
+                    frames = 0;
+                    timer++;
+                  //  System.out.println(c.deltaSeconds);
+                    
+                    
+                    
+                    
+                }
+                if(timer == 100000){
+                    System.out.println(timer);
+                }
                
-            if(System.currentTimeMillis() - timer > 1000){
-                timer += 1000;
-                System.out.println("FPS: "+ frames);
-                frames = 0;
-                timer++;
-              //  System.out.println(c.deltaSeconds);
-
-            }
-
-            if(timer == 100000){
-                System.out.println(timer);
-            }     
+                
         }
+         stop();
         
-         stop();    
     }
     private void tick(){
         handler.tick();
-        hud.tick();
         spawner.tick();
-        c.tick();     
+        hud.tick();
+        
+        c.tick();
+        
     }
-    
     private void render(){
         // main color method for rendering to window, graphics
         BufferStrategy bs = this.getBufferStrategy();
@@ -144,7 +150,7 @@ public class Game extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
         
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        g.fillRect(0, 0, (int)WIDTH, (int)HEIGHT);
         
         
         handler.render(g);
@@ -153,16 +159,17 @@ public class Game extends Canvas implements Runnable {
         
         g.dispose();
         bs.show();
-       
+        
+        
     }
-    
-    public static int clamp(int var, int min, int max){
+    public static float clamp(float var, float min, float max){
         // boundries of window
         
         if(var >= max)return var = max;
         else if(var <= min) return var = min;
         else return var;
         
+        
     }
- 
+   
 }
