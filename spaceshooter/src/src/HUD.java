@@ -18,7 +18,7 @@ public class HUD {
     
     private float greenVal = 255;
     
-    public int score = 0;
+    public static int score = 0;
     public int level = 0;
     
     private Clock c = new Clock();
@@ -71,8 +71,8 @@ public class HUD {
     }
     public void scoreAdd(int score){
         this.score += score;
-        System.out.println("here"
-                + "");
-        System.out.println(this.score);
+//        System.out.println("here"
+//                + "");
+//        System.out.println(this.score);
     }
 }

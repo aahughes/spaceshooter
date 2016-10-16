@@ -16,7 +16,7 @@ import java.util.Random;
  * @author ralph
  */
 public class Game extends Canvas implements Runnable {
-    
+    GameOverScreen gameOver;
     // main linked list of objects rendered to screen
     private Handler handler;
     // frame size
@@ -50,7 +50,7 @@ public class Game extends Canvas implements Runnable {
         minutes = 0;
         hours = 0;
         c = new Clock();
-
+        
         // test
              
         
@@ -166,5 +166,5 @@ public class Game extends Canvas implements Runnable {
         
         
     }
-   
+        
 }

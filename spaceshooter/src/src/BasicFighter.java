@@ -78,7 +78,7 @@ public class BasicFighter extends GameObject {
               if(getBounds().intersects(tempObject.getBounds())){
                   
                    handler.removeObject(this);
-                   hud.scoreAdd(10);
+                   HUD.score += 10;
                }
                 
                }

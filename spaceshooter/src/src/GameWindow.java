@@ -23,6 +23,7 @@ public class GameWindow extends JFrame{
     Game game;
     StartMenu menu;
     OptionsMenu options;
+    HUD hud;
     
     public GameWindow(int width, int height, String title, Game game){
         
@@ -37,21 +38,24 @@ public class GameWindow extends JFrame{
         this.game = game;
         this.setVisible(true);
         
-        //options = new OptionsMenu(this);
-        //this.add(options);
-        //options.setVisible(false);
+        options = new OptionsMenu(this);
+        this.add(options);
+        options.setVisible(false);
         
         menu = new StartMenu(this);
         this.add(menu);
         menu.setVisible(true);
+       
         
     }
     
     public void startGame(){
         this.add(game);
+        game.setVisible(true);
         menu.setVisible(false);
         options.setVisible(false);
         game.start();
+         
     }
     
     public void openOptions(){
@@ -60,4 +64,5 @@ public class GameWindow extends JFrame{
        options.setVisible(true);
        menu.setVisible(false);        
     }
+  
 }

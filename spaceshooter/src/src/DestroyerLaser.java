@@ -18,18 +18,29 @@ public class DestroyerLaser extends GameObject {
     Handler handler;
     Clock c;
     Random r;
+    int direction;
     public DestroyerLaser(float x, float y, ID id,Handler handler) {
         super(x, y, id);
         this.handler = handler;
         c = new Clock();
         r = new Random();
+        direction = r.nextInt(11);
+        
+        if(direction >= 5){
+            velX = 1;
+        }
+        if(direction < 5){
+            velX = -1;
+        }
+        velY = 1;
     }
     @Override
     public void tick() {
          x += velX;
         y += velY;
         
-        velY = 1;
+        
+       
         if(y <= 0 || y >= Game.HEIGHT) velY*= -1;
         if(x <= 0 || x >= Game.WIDTH) velX *= -1;
         
@@ -68,6 +79,7 @@ public class DestroyerLaser extends GameObject {
                   
                   tempPlayerObject.collision();
                    handler.removeObject(this);
+                   HUD.score += 50;
                     }
                 
                 }

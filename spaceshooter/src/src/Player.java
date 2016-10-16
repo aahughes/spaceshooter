@@ -56,20 +56,20 @@ public class Player extends GameObject{
                }
                
            }
-//             if(tempObject.getID() == ID.BasicLaser){
-//               //collision code
-//               
-//                if(getBounds().intersects(tempObject.getBounds())){
-//               HUD.HEALTH -= 5;    
-//               }
-//               
-//           }
+             if(tempObject.getID() == ID.DestroyerLaser){
+               //collision code
+               
+                if(getBounds().intersects(tempObject.getBounds())){
+               HUD.HEALTH -= 5;    
+               }
+               
+           }
        }
    }
     @Override
     public void render(Graphics g) {
         
-        g.setColor(Color.white);
+        g.setColor(Color.BLUE);
         g.fillRect((int)x,(int)y,32,32);
       
     }

@@ -33,7 +33,7 @@ public class Spawner {
         seconds = 0;
         stillEnemy = false;
         
-        whichLevel = 1;
+        whichLevel = 3;
     }
     public Spawner(){
         seconds = 0;
@@ -53,20 +53,22 @@ public class Spawner {
         
        
         // level system
-        if(whichLevel == 1 && stillEnemy == false){
+        if(whichLevel == 1 && stillEnemy == false){     
             level1();
             stillEnemy = true;
             whichLevel += 1;
             hud.level += 1; 
-        }
+        }  
         if(whichLevel == 2 && stillEnemy == false){
+            clearScreen();
             level2();
             stillEnemy = true;
             whichLevel += 1;
             hud.level += 1; 
         }
          if(whichLevel == 3 && stillEnemy == false){
-            level3();
+            clearScreen();
+             level3();
             stillEnemy = true;
             whichLevel += 1;
             hud.level += 1; 
@@ -120,9 +122,26 @@ public class Spawner {
     public void level3(){
         increment = -600;
         
-        for(int i = 0; i <= 5; i++){
-            handler.addObject(new EnemyDestroyer((WIDTH + increment)/2-32,HEIGHT/7,ID.BasicFighter,handler));
-            increment += 200;
+        for(int i = 0; i <= 2; i++){
+            handler.addObject(new EnemyDestroyer((WIDTH + increment)/2-32,HEIGHT/7,ID.EnemyDestroyer,handler));
+            increment += 400;
+        }
+        for(int i = 0; i <= 2; i++){
+            handler.addObject(new EnemyDestroyer((WIDTH + increment)/2-32,HEIGHT/3,ID.EnemyDestroyer,handler));
+            increment += 400;
+        }
+        
+    }
+    public void clearScreen(){
+        
+        for(int i = 0; i < handler.object.size(); i++){
+           GameObject tempObject = handler.object.get(i);
+           if(tempObject.getID() != ID.Player){
+               handler.object.remove(tempObject);
+               i = 0;
+           }
+           
+            
         }
         
     }

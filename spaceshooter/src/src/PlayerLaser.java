@@ -70,11 +70,18 @@ public class PlayerLaser extends GameObject{
                 
            
            }
+           if(tempObject.getID() == ID.EnemyDestroyer){
+                     //collision code
+                     tempEnemyObject = tempObject;
+              if(getBounds().intersects(tempObject.getBounds())){
+                  
+                  tempEnemyObject.collision();
+                   handler.removeObject(this);
+               }
+                
            
-         
-           
-           outOfBounds();
-                 
+           }
+           outOfBounds();    
         }
        }
        private void outOfBounds(){
