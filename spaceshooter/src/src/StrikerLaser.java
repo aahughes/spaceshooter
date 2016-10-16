@@ -13,20 +13,42 @@ import java.awt.Rectangle;
  *
  * @author ralpoh
  */
-public class BasicLaser extends GameObject {
+public class StrikerLaser extends GameObject {
     Handler handler;
     Clock c;
-    public BasicLaser(float x, float y, ID id,Handler handler) {
+    GameObject playerLocation;
+    public StrikerLaser(float x, float y, ID id,Handler handler) {
         super(x, y, id);
         this.handler = handler;
         c = new Clock();
+        
+        
+        
+        for(int i = 0; i < handler.object.size(); i ++){
+           if(handler.object.get(i).id == ID.Player){
+               playerLocation = handler.object.get(i);
+               break;
+           }
+        }
+        if(x + 25 < playerLocation.x){
+            velX = 2;
+        }
+         if(x - 50>= playerLocation.x){
+            velX = -2;
+        }
+          if(y - 50 >= playerLocation.y){
+            velY = -2;
+        }
+           if(y + 25< playerLocation.y){
+            velY = 2;
+        }
     }
     @Override
     public void tick() {
          x += velX;
         y += velY;
         
-        velY = 1;
+        
         if(y <= 0 || y >= Game.HEIGHT) velY*= -1;
         if(x <= 0 || x >= Game.WIDTH) velX *= -1;
         
@@ -35,14 +57,14 @@ public class BasicLaser extends GameObject {
 
     @Override
     public void render(Graphics g) {
-         g.setColor(Color.GRAY);
-        g.fillRect((int)x,(int)y,5,15);
+         g.setColor(Color.YELLOW);
+        g.fillRect((int)x,(int)y,5,5);
         
     }
 
     @Override
     public Rectangle getBounds() {
-         return new Rectangle((int)x,(int)y,5,15);  
+         return new Rectangle((int)x,(int)y,5,5);  
     }
     @Override
     public void collision() {
@@ -82,10 +104,3 @@ public class BasicLaser extends GameObject {
            
        }
 }
-        
-        
-    
-    
-    
-    
-

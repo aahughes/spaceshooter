@@ -20,7 +20,9 @@ public enum ID {
     PlayerLaser(),
     EnemyDestroyer(),
     DestroyerLaser(),
-    Boss1
+    Boss1(),
+    StrikerLaser(),
+    EnemyStriker()
     ;
     
 }

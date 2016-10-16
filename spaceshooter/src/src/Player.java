@@ -64,6 +64,14 @@ public class Player extends GameObject{
                }
                
            }
+              if(tempObject.getID() == ID.StrikerLaser){
+               //collision code
+               
+                if(getBounds().intersects(tempObject.getBounds())){
+               HUD.HEALTH -= 5;    
+               }
+               
+           }
        }
    }
     @Override

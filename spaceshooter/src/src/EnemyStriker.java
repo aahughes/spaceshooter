@@ -5,6 +5,7 @@
  */
 package src;
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -14,20 +15,39 @@ import java.util.Random;
  *
  * @author ralpoh
  */
-public class EnemyDestroyer extends GameObject {
+public class EnemyStriker extends GameObject {
     Handler handler;
     float initialX;
     Clock c;
+    Random r;
     int health;
-   Graphics g;
-    public EnemyDestroyer(float x, float y, ID id,Handler handler) {
+    Graphics g;
+    public EnemyStriker(float x, float y, ID id,Handler handler) {
         super(x, y, id);
         this.initialX = x;
         this.handler = handler;
-        velX = 1;
-        c = new Clock();
         health = 5;
+       // velX = 1;
+       // velY = 1;
+        c = new Clock();
+        r = new Random();
         
+        if(r.nextInt(11) >= 5){
+            velX = 1;
+        }
+         if(r.nextInt(11) < 5){
+            velX = -1;
+        }
+         if(r.nextInt(11) > 5){
+            velY = 1;
+        }
+         if(r.nextInt(11) <= 5){
+            velY = -1;
+        }
+         else{
+             velX = 1;
+             velY = 1;
+         }
     }
 
     @Override
@@ -38,35 +58,35 @@ public class EnemyDestroyer extends GameObject {
         
         // laser shooting
         if(c.deltaSeconds >= 1){
-            
-            handler.addObject(new DestroyerLaser(x+20,y+64,ID.DestroyerLaser,handler));   
+            handler.addObject(new StrikerLaser(x,y,ID.StrikerLaser,handler));   
             c.deltaSeconds = 0;
         } 
         
-        if(x <= initialX - 50 || x >= initialX + 50) velX*= -1;  
-        if(y <= 0 || y >= Game.HEIGHT - 64) velY*= -1;
-        if(x <= 0 || x >= Game.WIDTH - 34) velX *= -1;
-       collision();
+      //  if(x <= initialX - 50 || x >= initialX + 50) velX*= -1;  
+        if(y >= Game.HEIGHT) y = 10;
+        if(x >= Game.WIDTH)  x = 10;
+        if(y <= 0) y = Game.HEIGHT - 10;
+        if(x <= 0) x = Game.WIDTH - 10;
     }
 
     @Override
     public void render(Graphics g) {
         this.g = g;
         if(health >= 4){
-            g.setColor(Color.WHITE);
-            g.fillRect((int)x,(int)y,40,64); 
-        }
-        if(health <= 3){
-            g.setColor(Color.RED);
-            g.fillRect((int)x,(int)y,40,64);
+            g.setColor(Color.YELLOW);
+            g.fillRect((int)x,(int)y,32,32);
         }
         
+        if(health <= 3){
+            g.setColor(Color.RED);
+            g.fillRect((int)x,(int)y,32,32);
+        }
       
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x,(int)y,40,64);
+        return new Rectangle((int)x,(int)y,32,32);
     }
 
     @Override
@@ -80,28 +100,30 @@ public class EnemyDestroyer extends GameObject {
               
            
            
-           if(tempObject.getID() == ID.PlayerLaser){
+          if(tempObject.getID() == ID.PlayerLaser){
+                  
                //collision code
                
               if(getBounds().intersects(tempObject.getBounds())){
                   
                   health--;
-                   hud.scoreAdd(10);
-                //   System.out.println(health);
+                   
+              
                }
-              if(health <= 3){
+              if(health <=3){
                   render(g);
               }
                 if(health <= 0){
                 handler.removeObject(this);
                     }
+                
             }
-        }
+           }
            
+        }
+        
+        
     }
-        
-        
-}
     
     
     

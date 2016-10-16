@@ -50,7 +50,7 @@ public class BasicFighter extends GameObject {
     @Override
     public void render(Graphics g) {
         
-        g.setColor(Color.RED);
+        g.setColor(Color.GRAY);
         g.fillRect((int)x,(int)y,32,32);
         
       

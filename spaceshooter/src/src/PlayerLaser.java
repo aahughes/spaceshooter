@@ -28,7 +28,7 @@ public class PlayerLaser extends GameObject{
          x += velX;
         y += velY;
         
-        velY = -1;
+        velY = -2;
         if(y <= 0 || y >= Game.HEIGHT-64) velY*= -1;
         if(x <= 0 || x >= Game.WIDTH) velX *= -1;
         
@@ -71,6 +71,17 @@ public class PlayerLaser extends GameObject{
            
            }
            if(tempObject.getID() == ID.EnemyDestroyer){
+                     //collision code
+                     tempEnemyObject = tempObject;
+              if(getBounds().intersects(tempObject.getBounds())){
+                  
+                  tempEnemyObject.collision();
+                   handler.removeObject(this);
+               }
+                
+           
+           }
+            if(tempObject.getID() == ID.EnemyStriker){
                      //collision code
                      tempEnemyObject = tempObject;
               if(getBounds().intersects(tempObject.getBounds())){

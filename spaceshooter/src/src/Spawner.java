@@ -6,6 +6,7 @@
 package src;
 
 import java.util.LinkedList;
+import java.util.Random;
 import static src.Game.HEIGHT;
 import static src.Game.WIDTH;
 
@@ -22,7 +23,7 @@ public class Spawner {
     boolean stillEnemy;
     int increment;
     int whichLevel;
-    
+    Random r;
     
    
     
@@ -32,14 +33,14 @@ public class Spawner {
         c = new Clock();
         seconds = 0;
         stillEnemy = false;
-        
+        r = new Random();
         whichLevel = 3;
     }
     public Spawner(){
         seconds = 0;
         c = new Clock();
         stillEnemy = false;
-       
+       r = new Random();
         whichLevel = 1;
     }
     public void tick(){
@@ -73,6 +74,13 @@ public class Spawner {
             whichLevel += 1;
             hud.level += 1; 
         }
+           if(whichLevel == 4 && stillEnemy == false){
+            clearScreen();
+             level4();
+            stillEnemy = true;
+            whichLevel += 1;
+            hud.level += 1; 
+        }
         
        // System.out.println(whichLevel);
     }
@@ -88,6 +96,7 @@ public class Spawner {
             }
              if(tempObject.id == ID.EnemyDestroyer){
                 tempEnemy = true;
+                 
                 return true;
             }
             
@@ -124,12 +133,21 @@ public class Spawner {
         
         for(int i = 0; i <= 2; i++){
             handler.addObject(new EnemyDestroyer((WIDTH + increment)/2-32,HEIGHT/7,ID.EnemyDestroyer,handler));
-            increment += 400;
+            increment += 600;
         }
-        for(int i = 0; i <= 2; i++){
+         increment = -300;
+        for(int i = 0; i <= 1; i++){
             handler.addObject(new EnemyDestroyer((WIDTH + increment)/2-32,HEIGHT/3,ID.EnemyDestroyer,handler));
-            increment += 400;
+            increment += 600;
         }
+        
+    }
+      public void level4() {
+         
+          for(int i = 0; i <= 3; i++){
+           handler.addObject(new EnemyStriker((r.nextInt((int) WIDTH - 32)),r.nextInt((int)HEIGHT - 32),ID.EnemyStriker,handler));
+            
+       }
         
     }
     public void clearScreen(){
@@ -145,6 +163,8 @@ public class Spawner {
         }
         
     }
+
+  
 }   
     
     
