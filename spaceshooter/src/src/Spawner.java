@@ -34,7 +34,7 @@ public class Spawner {
         seconds = 0;
         stillEnemy = false;
         r = new Random();
-        whichLevel = 3;
+        whichLevel = 1;
     }
     public Spawner(){
         seconds = 0;
