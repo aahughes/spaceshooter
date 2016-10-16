@@ -7,17 +7,16 @@ package src;
 
 /**
  *
- * @author aah5307
+ * @author Allison
  */
-public class StartMenu extends javax.swing.JPanel {
-    
-    GameWindow game;
+public class OptionsMenu extends javax.swing.JPanel {
 
+    private GameWindow game;
+    
     /**
-     * Creates new form StartMenu
-     * @param game
+     * Creates new form OptionsMenu
      */
-    public StartMenu(GameWindow game) {
+    public OptionsMenu(GameWindow game) {
         this.game = game;
         
         initComponents();
@@ -34,10 +33,9 @@ public class StartMenu extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
-        optionsButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel1.setText("StarShooter pre-alpha");
+        jLabel1.setText("Options");
 
         startButton.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         startButton.setText("START");
@@ -47,42 +45,27 @@ public class StartMenu extends javax.swing.JPanel {
             }
         });
 
-        optionsButton.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        optionsButton.setText("OPTIONS");
-        optionsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                optionsButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(168, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(167, 167, 167))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(319, 319, 319)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(292, Short.MAX_VALUE)
+                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(289, 289, 289))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
+                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -90,14 +73,9 @@ public class StartMenu extends javax.swing.JPanel {
         game.startGame();
     }//GEN-LAST:event_startButtonActionPerformed
 
-    private void optionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionsButtonActionPerformed
-        game.openOptions();
-    }//GEN-LAST:event_optionsButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton optionsButton;
     private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
 }
