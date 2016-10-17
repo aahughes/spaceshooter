@@ -37,9 +37,11 @@ public class Game extends Canvas implements Runnable {
     private int minutes;
     private int hours;
     Clock c;
+    
+    private GameWindow window;
     // contructor for game
     
-    public Game(){
+    public Game(GameWindow window){
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
         //new GameWindow((int)WIDTH,(int)HEIGHT,"StarShooter pre-alpha",this);

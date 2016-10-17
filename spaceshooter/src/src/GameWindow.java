@@ -25,7 +25,7 @@ public class GameWindow extends JFrame{
     OptionsMenu options;
     HUD hud;
     
-    public GameWindow(int width, int height, String title, Game game){
+    public GameWindow(int width, int height, String title){
         
         this.setPreferredSize(new Dimension(width,height));
         this.setMaximumSize(new Dimension(width,height));
@@ -35,7 +35,7 @@ public class GameWindow extends JFrame{
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         
-        this.game = game;
+        this.game = new Game(this);
         this.setVisible(true);
         
         options = new OptionsMenu(this);

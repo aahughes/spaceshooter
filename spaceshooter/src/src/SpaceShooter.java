@@ -13,7 +13,7 @@ public class SpaceShooter {
  
     public static void main(String[] args) {
         
-        new GameWindow(800,600,"StarShooter pre-alpha",new Game());
+        new GameWindow(800,600,"StarShooter pre-alpha");
     }
     
 }
