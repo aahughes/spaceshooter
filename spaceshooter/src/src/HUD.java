@@ -14,7 +14,7 @@ import java.awt.Graphics;
  */
 public class HUD {
     
-    public static float HEALTH = 100;
+    public float HEALTH = 100;
     
     private float greenVal = 255;
     
@@ -26,7 +26,7 @@ public class HUD {
     private int minutes = 0;
     private int hours = 0;
     
-    
+    public boolean noHealth = false;
     
     public void tick(){
      
@@ -74,5 +74,24 @@ public class HUD {
 //        System.out.println("here"
 //                + "");
 //        System.out.println(this.score);
+    }
+    
+    public void loseHealth(int loss){
+        this.HEALTH -= loss;
+        
+        // debug
+        System.out.println("health lost");
+        //
+        
+        checkHealth();
+    }
+        
+    public void checkHealth(){
+        if (this.HEALTH <= 0){
+            this.noHealth = true;
+            
+            //debug
+            System.out.println("no health");
+        }
     }
 }

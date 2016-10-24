@@ -17,10 +17,15 @@ import java.awt.Rectangle;
 
 public class Player extends GameObject{
     Handler handler;
+    HUD hud;
     
-    public Player(float x, float y, ID id,Handler handler) {
+    public boolean isAlive;
+    
+    public Player(float x, float y, ID id,Handler handler,HUD hud) {
         super(x, y, id);
         this.handler = handler;
+        this.hud = hud;
+        isAlive = true;
     }
 
     @Override
@@ -38,41 +43,40 @@ public class Player extends GameObject{
     @Override
    public void collision(){
        
-       for(int i = 0; i < handler.object.size(); i++){
-           GameObject tempObject = handler.object.get(i);
-           
-           if(tempObject.getID() == ID.BasicFighter){
-               //collision code
-     
-               if(getBounds().intersects(tempObject.getBounds())){
-               HUD.HEALTH -= 5;    
-               } 
-           }
-           if(tempObject.getID() == ID.BasicLaser){
-               //collision code
+        for (GameObject tempObject : handler.object) {
+            if(tempObject.getID() == ID.BasicFighter){
+                //collision code
                
                 if(getBounds().intersects(tempObject.getBounds())){
-               HUD.HEALTH -= 5;    
-               }
-               
-           }
-             if(tempObject.getID() == ID.DestroyerLaser){
-               //collision code
-               
-                if(getBounds().intersects(tempObject.getBounds())){
-               HUD.HEALTH -= 5;    
-               }
-               
-           }
-              if(tempObject.getID() == ID.StrikerLaser){
-               //collision code
+                    hud.loseHealth(5);
+                }
+            }
+            if(tempObject.getID() == ID.BasicLaser){
+                //collision code
                
                 if(getBounds().intersects(tempObject.getBounds())){
-               HUD.HEALTH -= 5;    
-               }
+                    hud.loseHealth(5);
+                }
+                
+            }
+            if(tempObject.getID() == ID.DestroyerLaser){
+                //collision code
                
-           }
-       }
+                if(getBounds().intersects(tempObject.getBounds())){
+                    hud.loseHealth(5);
+                }
+                
+            }
+            if(tempObject.getID() == ID.StrikerLaser){
+                //collision code
+                
+                if(getBounds().intersects(tempObject.getBounds())){
+                    hud.loseHealth(5);
+                }
+                
+            }
+        }
+        
    }
     @Override
     public void render(Graphics g) {
@@ -85,4 +89,5 @@ public class Player extends GameObject{
     public Rectangle getBounds() {
         return new Rectangle((int)x,(int)y,32,32);
     }
+    
 }

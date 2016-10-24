@@ -24,6 +24,7 @@ public class GameWindow extends JFrame{
     StartMenu menu;
     OptionsMenu options;
     HUD hud;
+    GameOverScreen gameover;
     
     public GameWindow(int width, int height, String title){
         
@@ -35,7 +36,8 @@ public class GameWindow extends JFrame{
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         
-        this.game = new Game(this);
+        this.setTitle(title);
+        
         this.setVisible(true);
         
         options = new OptionsMenu(this);
@@ -46,16 +48,17 @@ public class GameWindow extends JFrame{
         this.add(menu);
         menu.setVisible(true);
        
-        
+        gameover = new GameOverScreen(this);
     }
     
     public void startGame(){
+        this.game = new Game(this);
         this.add(game);
         game.setVisible(true);
         menu.setVisible(false);
+        gameover.setVisible(false);
         options.setVisible(false);
         game.start();
-         
     }
     
     public void openOptions(){
@@ -63,6 +66,14 @@ public class GameWindow extends JFrame{
        this.add(options);
        options.setVisible(true);
        menu.setVisible(false);        
+    }
+    
+    public void openGameOver(){
+        gameover = new GameOverScreen(this);
+        this.remove(game);
+        this.add(gameover);
+        gameover.setVisible(true);
+        this.setVisible(true);
     }
   
 }

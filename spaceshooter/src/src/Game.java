@@ -38,13 +38,14 @@ public class Game extends Canvas implements Runnable {
     private int hours;
     Clock c;
     
+    // reference to GameWindow for method use
     private GameWindow window;
+    
     // contructor for game
     
     public Game(GameWindow window){
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
-        //new GameWindow((int)WIDTH,(int)HEIGHT,"StarShooter pre-alpha",this);
         hud = new HUD();
         spawner = new Spawner(handler, hud);
         // time stuff
@@ -53,21 +54,18 @@ public class Game extends Canvas implements Runnable {
         hours = 0;
         c = new Clock();
         
+        this.window = window;
+        
         // test
              
-        
+                    
+         handler.addObject(new Player(WIDTH/2-32,HEIGHT/2-32,ID.Player,handler,hud));
        
-            
-         handler.addObject(new Player(WIDTH/2-32,HEIGHT/2-32,ID.Player,handler));
-       
-         
-
-
-        // test level 1
-        
-      
+        // test level 1        
        
     }
+    
+    
     // start method
     public synchronized void start(){
         thread = new Thread(this);
@@ -134,6 +132,15 @@ public class Game extends Canvas implements Runnable {
         spawner.tick();
         hud.tick();
         
+        if(hud.noHealth){
+            gameOver();
+            
+            //debug
+            System.out.println("game over");
+            
+            stop();
+        }
+        
         c.tick();
         
     }
@@ -166,7 +173,10 @@ public class Game extends Canvas implements Runnable {
         else if(var <= min) return var = min;
         else return var;
         
-        
+    }
+    
+    public void gameOver(){
+        window.openGameOver();
     }
         
 }
