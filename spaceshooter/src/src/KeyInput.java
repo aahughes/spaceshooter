@@ -45,6 +45,7 @@ public class KeyInput extends KeyAdapter{
             GameObject tempObject = handler.object.get(i);
             
             if(tempObject.getID() == ID.Player){
+                
                 float x = tempObject.getX();
                 float y = tempObject.getY();
                 // key events for player 1
@@ -57,7 +58,7 @@ public class KeyInput extends KeyAdapter{
                 // player laster
                 
                     
-                if(key == KeyEvent.VK_SPACE)handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler));
+                if(key == KeyEvent.VK_SPACE) tempObject.action();
                 
                      
                     

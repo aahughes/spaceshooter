@@ -40,6 +40,7 @@ public abstract class GameObject {
     public abstract void render(Graphics g);
     public abstract Rectangle getBounds();
     public abstract void collision();
+    public abstract void action();
         
     //getter and setters
     public void setX(float x){

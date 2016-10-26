@@ -20,12 +20,23 @@ public class Player extends GameObject{
     HUD hud;
     
     public boolean isAlive;
+    char[] weapon = new char[5];
+    char currentWeapon;
     
+            
     public Player(float x, float y, ID id,Handler handler,HUD hud) {
         super(x, y, id);
         this.handler = handler;
         this.hud = hud;
         isAlive = true;
+        //different weapons
+        weapon[0] = 'a'; // basic laser
+        weapon[1] = 'b';
+        weapon[2] = 'c';
+        weapon[3] = 'd';
+        weapon[4] = 'e';
+        
+        currentWeapon = 'a';
     }
 
     @Override
@@ -89,5 +100,24 @@ public class Player extends GameObject{
     public Rectangle getBounds() {
         return new Rectangle((int)x,(int)y,32,32);
     }
-    
+    @Override
+    public void action(){
+        
+        // basic laser    
+        if(currentWeapon == weapon[0]){
+                handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler));
+            }
+        else if(currentWeapon == weapon[1]){
+            
+        }
+        else if(currentWeapon == weapon[2]){
+            
+        }
+        else if(currentWeapon == weapon[3]){
+            
+        }
+        else if(currentWeapon == weapon[4]){
+            
+        }
+    }
 }
