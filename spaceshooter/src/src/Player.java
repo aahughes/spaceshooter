@@ -36,7 +36,7 @@ public class Player extends GameObject{
         weapon[3] = 'd';
         weapon[4] = 'e';
         
-        currentWeapon = 'a';
+        currentWeapon = 'b';
     }
 
     @Override
@@ -105,10 +105,12 @@ public class Player extends GameObject{
         
         // basic laser    
         if(currentWeapon == weapon[0]){
-                handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler));
+                handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler,0,-2));
             }
         else if(currentWeapon == weapon[1]){
-            
+            handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler,0,-2));
+            handler.addObject(new PlayerLaser(x+28,y,ID.PlayerLaser,handler,1,-2));
+            handler.addObject(new PlayerLaser(x,y,ID.PlayerLaser,handler,-1,-2));
         }
         else if(currentWeapon == weapon[2]){
             

@@ -17,10 +17,12 @@ public class PlayerLaser extends GameObject{
 
     Handler handler;
     Clock c;
-    public PlayerLaser(float x, float y, ID id,Handler handler) {
+    public PlayerLaser(float x, float y, ID id,Handler handler,float velX, float velY) {
         super(x, y, id);
         this.handler = handler;
         c = new Clock();
+        this.velX = velX;
+        this.velY = velY;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class PlayerLaser extends GameObject{
          x += velX;
         y += velY;
         
-        velY = -2;
+        // velY = -2;
         if(y <= 0 || y >= Game.HEIGHT-64) velY*= -1;
         if(x <= 0 || x >= Game.WIDTH) velX *= -1;
         
