@@ -47,6 +47,7 @@ public class Game extends Canvas implements Runnable {
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
         hud = new HUD();
+       // System.out.println("here");
         spawner = new Spawner(handler, hud);
         // time stuff
         seconds = 0;
@@ -55,7 +56,7 @@ public class Game extends Canvas implements Runnable {
         c = new Clock();
         
         this.window = window;
-        
+        hud.score = 0;
         // test
              
                     

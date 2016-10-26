@@ -86,7 +86,7 @@ public class EnemyDestroyer extends GameObject {
               if(getBounds().intersects(tempObject.getBounds())){
                   
                   health--;
-                   hud.scoreAdd(10);
+                  
                 //   System.out.println(health);
                }
               if(health <= 3){
