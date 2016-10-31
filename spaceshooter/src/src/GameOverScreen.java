@@ -35,10 +35,10 @@ public class GameOverScreen extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         continueButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("wendy", 1, 106)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Impact", 1, 72)); // NOI18N
         jLabel1.setText("GAME OVER");
 
-        continueButton.setFont(new java.awt.Font("wendy", 0, 48)); // NOI18N
+        continueButton.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         continueButton.setText("CONTINUE?");
         continueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,21 +51,20 @@ public class GameOverScreen extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(203, 203, 203)
+                .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(204, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(224, 224, 224))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(90, 90, 90)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(159, 159, 159)
+                .addGap(151, 151, 151)
                 .addComponent(continueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(182, Short.MAX_VALUE))
         );

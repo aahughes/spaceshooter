@@ -34,10 +34,10 @@ public class OptionsMenu extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("wendy", 0, 96)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Impact", 1, 48)); // NOI18N
         jLabel1.setText("Options");
 
-        startButton.setFont(new java.awt.Font("wendy", 0, 48)); // NOI18N
+        startButton.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         startButton.setText("START");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +63,7 @@ public class OptionsMenu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 332, Short.MAX_VALUE)
                 .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
         );

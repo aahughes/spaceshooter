@@ -36,10 +36,10 @@ public class StartMenu extends javax.swing.JPanel {
         startButton = new javax.swing.JButton();
         optionsButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("wendy", 0, 80)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Impact", 1, 72)); // NOI18N
         jLabel1.setText("StarShooter pre-alpha");
 
-        startButton.setFont(new java.awt.Font("wendy", 0, 48)); // NOI18N
+        startButton.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         startButton.setText("START");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,7 +47,7 @@ public class StartMenu extends javax.swing.JPanel {
             }
         });
 
-        optionsButton.setFont(new java.awt.Font("wendy", 0, 48)); // NOI18N
+        optionsButton.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
         optionsButton.setText("OPTIONS");
         optionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,29 +60,26 @@ public class StartMenu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(288, 288, 288)
-                            .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(290, 290, 290)
-                            .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(269, 269, 269))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
+                .addGap(116, 116, 116)
                 .addComponent(jLabel1)
-                .addGap(74, 74, 74)
+                .addGap(79, 79, 79)
                 .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(57, 57, 57)
                 .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
