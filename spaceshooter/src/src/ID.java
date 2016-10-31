@@ -22,7 +22,13 @@ public enum ID {
     DestroyerLaser(),
     Boss1(),
     StrikerLaser(),
-    EnemyStriker()
-    ;
+    EnemyStriker(),
+    ShotGun(),
+    FastBeam(),
+    AirBurst(),
+    UpgradeShotGun(),
+    UpgradeFastBeam(),
+    UpgradeAirBurst();
+    
     
 }

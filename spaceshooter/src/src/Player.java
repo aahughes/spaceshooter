@@ -36,7 +36,7 @@ public class Player extends GameObject{
         weapon[3] = 'd';
         weapon[4] = 'e';
         
-        currentWeapon = 'b';
+        currentWeapon = 'a';
     }
 
     @Override
@@ -86,7 +86,26 @@ public class Player extends GameObject{
                 }
                 
             }
+                if(tempObject.getID() == ID.UpgradeShotGun){
+                if(getBounds().intersects(tempObject.getBounds())){
+                    currentWeapon = 'b';
+                //    System.out.println(currentWeapon);
+                }
+            }
+                if(tempObject.getID() == ID.UpgradeAirBurst){
+                if(getBounds().intersects(tempObject.getBounds())){
+                    currentWeapon = 'c';
+                 //   System.out.println(currentWeapon);       
+                } 
+            }
+                if(tempObject.getID() == ID.UpgradeFastBeam){
+                if(getBounds().intersects(tempObject.getBounds())){
+                    currentWeapon = 'd';
+                 //   System.out.println(currentWeapon);
+                } 
+            }
         }
+        
         
    }
     @Override
@@ -107,16 +126,20 @@ public class Player extends GameObject{
         if(currentWeapon == weapon[0]){
                 handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler,0,-2));
             }
+        // shotgun
         else if(currentWeapon == weapon[1]){
-            handler.addObject(new PlayerLaser(x+14,y,ID.PlayerLaser,handler,0,-2));
-            handler.addObject(new PlayerLaser(x+28,y,ID.PlayerLaser,handler,1,-2));
-            handler.addObject(new PlayerLaser(x,y,ID.PlayerLaser,handler,-1,-2));
+            handler.addObject(new ShotGun(x+14,y,ID.ShotGun,handler,0,-3));
+            handler.addObject(new ShotGun(x+28,y,ID.ShotGun,handler,1,-3));
+            handler.addObject(new ShotGun(x,y,ID.ShotGun,handler,-1,-3));
         }
+        //airburst
         else if(currentWeapon == weapon[2]){
+            handler.addObject(new AirBurst(x+14,y,ID.AirBurst,handler,0,-2));
             
         }
+        // fastBeam
         else if(currentWeapon == weapon[3]){
-            
+            handler.addObject(new FastBeam(x+14,y,ID.FastBeam,handler,0,-4));
         }
         else if(currentWeapon == weapon[4]){
             

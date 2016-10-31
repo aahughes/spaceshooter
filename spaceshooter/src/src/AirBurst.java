@@ -13,26 +13,38 @@ import java.awt.Rectangle;
  *
  * @author ralpoh
  */
-public class PlayerLaser extends GameObject{
-
+public class AirBurst extends GameObject{
+    
     Handler handler;
     Clock c;
-    public PlayerLaser(float x, float y, ID id,Handler handler,float velX, float velY) {
+    float initialY;
+    public AirBurst(float x, float y, ID id,Handler handler,float velX, float velY) {
         super(x, y, id);
         this.handler = handler;
         c = new Clock();
         this.velX = velX;
         this.velY = velY;
+        initialY = y;
     }
 
     @Override
     public void tick() {
          x += velX;
-        y += velY; 
+        y += velY;
+        
         collision();
-      
-    }
+        
+        if(this.y < initialY - 100){
+            
+                handler.addObject(new ShotGun(x+14,y,ID.ShotGun,handler,-1,-1));
+                handler.addObject(new ShotGun(x+14,y,ID.ShotGun,handler,1,-1));
+                handler.addObject(new ShotGun(x+14,y,ID.ShotGun,handler,-1,1));
+                handler.addObject(new ShotGun(x+14,y,ID.ShotGun,handler,1,1));
 
+            handler.removeObject(this);
+        }
+    
+    }
     @Override
     public void render(Graphics g) {
          g.setColor(Color.GREEN);
@@ -48,56 +60,44 @@ public class PlayerLaser extends GameObject{
     }
 
     @Override
-    public void collision() {
+  public void collision() {
         
         for(int i = 0; i < handler.object.size(); i++){
-            
-            
-            
-            
            GameObject tempEnemyObject;
            GameObject tempObject = handler.object.get(i);
+           /////////////////////////////////////////////////////////////////////
            if(tempObject.getID() == ID.BasicFighter){
-                     //collision code
                      tempEnemyObject = tempObject;
-              if(getBounds().intersects(tempObject.getBounds())){
-                  
+              if(getBounds().intersects(tempObject.getBounds())){    
                   tempEnemyObject.collision();
                    handler.removeObject(this);
                }
-                
-           
            }
+           //////////////////////////////////////////////////////////////////////
            if(tempObject.getID() == ID.EnemyDestroyer){
-                     //collision code
                      tempEnemyObject = tempObject;
-              if(getBounds().intersects(tempObject.getBounds())){
-                  
+              if(getBounds().intersects(tempObject.getBounds())){      
                   tempEnemyObject.collision();
                    handler.removeObject(this);
                }
-                
-           
            }
+           /////////////////////////////////////////////////////////////////////
             if(tempObject.getID() == ID.EnemyStriker){
                      //collision code
                      tempEnemyObject = tempObject;
-              if(getBounds().intersects(tempObject.getBounds())){
-                  
+              if(getBounds().intersects(tempObject.getBounds())){                  
                   tempEnemyObject.collision();
                    handler.removeObject(this);
                }
-                
-           
            }
            outOfBounds();    
         }
        }
        private void outOfBounds(){
               if(x <= 0) handler.removeObject(this);
-              if (x >= WIDTH-34) handler.removeObject(this);
+              if (x >= WIDTH) handler.removeObject(this);
               if(y <= 0) handler.removeObject(this);
-              if (y >= HEIGHT-64) handler.removeObject(this);
+              if (y >= HEIGHT) handler.removeObject(this);
            
            
        } 

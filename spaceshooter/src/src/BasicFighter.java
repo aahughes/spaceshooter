@@ -69,21 +69,45 @@ public class BasicFighter extends GameObject {
            GameObject tempObject = handler.object.get(i);
            if(tempObject.getID() == ID.PlayerLaser){
               tempPlayerObject = tempObject;
-              
-           
-           
            if(tempObject.getID() == ID.PlayerLaser){
-               //collision code
-               
               if(getBounds().intersects(tempObject.getBounds())){
-                  
                    handler.removeObject(this);
                    HUD.score++;
                }
                 
                }
            }
-           
+           ///////////////////////////////////////////////////
+           if(tempObject.getID() == ID.ShotGun){
+              tempPlayerObject = tempObject;
+           if(tempObject.getID() == ID.ShotGun){
+              if(getBounds().intersects(tempObject.getBounds())){
+                   handler.removeObject(this);
+                   HUD.score++;
+               }
+               }
+           }
+           ///////////////////////////////////////////////////
+           if(tempObject.getID() == ID.AirBurst){
+              tempPlayerObject = tempObject;
+           if(tempObject.getID() == ID.AirBurst){
+              if(getBounds().intersects(tempObject.getBounds())){
+                   handler.removeObject(this);
+                   HUD.score++;
+               }
+               }
+           }
+           ///////////////////////////////////////////////////
+        if(tempObject.getID() == ID.FastBeam){
+              tempPlayerObject = tempObject;
+           if(tempObject.getID() == ID.FastBeam){
+              if(getBounds().intersects(tempObject.getBounds())){
+                   handler.removeObject(this);
+                   HUD.score++;
+               }
+                
+               }
+           }
         }
         
         

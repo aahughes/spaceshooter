@@ -90,41 +90,57 @@ public class EnemyStriker extends GameObject {
     }
 
     @Override
-    public void collision() {
+      public void collision() {
         
         for(int i = 0; i < handler.object.size(); i++){
            GameObject tempPlayerObject;
            GameObject tempObject = handler.object.get(i);
+           
            if(tempObject.getID() == ID.PlayerLaser){
               tempPlayerObject = tempObject;
-              
-           
-           
-          if(tempObject.getID() == ID.PlayerLaser){
-                  
-               //collision code
-               
+           if(tempObject.getID() == ID.PlayerLaser){
               if(getBounds().intersects(tempObject.getBounds())){
-                  
                   health--;
-                   
-              
-               }
-              if(health <=3){
-                  render(g);
-              }
-                if(health <= 0){
-                handler.removeObject(this);
-                    }
-                
+               }               
             }
-           }
-           
         }
-        
-        
-    }
-
+////////////////////////////////////////////////////////////////////////////////////////          
+           else if(tempObject.getID() == ID.ShotGun){
+              tempPlayerObject = tempObject;
+              if(tempObject.getID() == ID.ShotGun){
+              if(getBounds().intersects(tempObject.getBounds())){                 
+                  health--;
+               }
+              
+            }
+        }
+ ////////////////////////////////////////////////////////////////////////////////////////          
+           else if(tempObject.getID() == ID.AirBurst){
+              tempPlayerObject = tempObject;
+              if(tempObject.getID() == ID.AirBurst){
+              if(getBounds().intersects(tempObject.getBounds())){                 
+                  health--;
+               }
+            }
+        }
+  ////////////////////////////////////////////////////////////////////////////////// 
+            else if(tempObject.getID() == ID.FastBeam){
+              tempPlayerObject = tempObject;
+                if(tempObject.getID() == ID.FastBeam){
+                if(getBounds().intersects(tempObject.getBounds())){
+                  health--;
+                }
+            }
+        }   
+            if(health <= 3){
+                    render(g);
+                }
+            if(health <= 0){
+                    handler.removeObject(this);
+                    HUD.score += 50;
+                }
+    }    
+}
     @Override
     public void action() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
