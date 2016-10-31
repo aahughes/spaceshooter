@@ -24,17 +24,19 @@ public class Spawner {
     int increment;
     int whichLevel;
     Random r;
-    
-   
-    
+    boolean cont;
+    ID tempID;
     public Spawner(Handler handler, HUD hud){
         this.handler = handler;
         this.hud = hud;
         c = new Clock();
         seconds = 0;
-        stillEnemy = false;
+        stillEnemy = true;
         r = new Random();
         whichLevel = 1;
+        cont = false;
+       tempID = null;
+        
     }
     public Spawner(){
         seconds = 0;
@@ -44,14 +46,31 @@ public class Spawner {
         whichLevel = 1;
     }
     public void tick(){
+        
         scoreKeep++;
-  
+        
         seconds = c.deltaSeconds;
-       
-        stillEnemy = presentEnemy();
+        
+          cont = spawnUpgrade();
           c.tick();
-        
-        
+        //stillEnemy = presentEnemy();
+        if(cont == true){
+            
+            int tempLocation = r.nextInt((int)WIDTH);
+            int whichUpgrade = r.nextInt(3);
+            
+            if(whichUpgrade == 0){
+            tempID = ID.UpgradeShotGun;
+            }
+            else if(whichUpgrade == 1){
+            tempID = ID.UpgradeAirBurst; 
+            }
+            else if(whichUpgrade == 2){
+            tempID = ID.UpgradeFastBeam;
+            }  
+            handler.addObject(new upgradeWeapons(tempLocation,0,tempID,handler));
+            
+        }
        
         // level system
         if(whichLevel == 1 && stillEnemy == false){     
@@ -60,21 +79,21 @@ public class Spawner {
             whichLevel += 1;
             hud.level += 1; 
         }  
-        if(whichLevel == 2 && stillEnemy == false){
+        else if(whichLevel == 2 && stillEnemy == false){
             clearScreen();
             level2();
             stillEnemy = true;
             whichLevel += 1;
             hud.level += 1; 
         }
-         if(whichLevel == 3 && stillEnemy == false){
+        else if(whichLevel == 3 && stillEnemy == false){
             clearScreen();
              level3();
             stillEnemy = true;
             whichLevel += 1;
             hud.level += 1; 
         }
-           if(whichLevel == 4 && stillEnemy == false){
+        else if(whichLevel == 4 && stillEnemy == false){
             clearScreen();
              level4();
             stillEnemy = true;
@@ -96,10 +115,12 @@ public class Spawner {
             }
              if(tempObject.id == ID.EnemyDestroyer){
                 tempEnemy = true;
-                 
                 return true;
             }
-            
+             if(tempObject.id == ID.EnemyStriker){
+                tempEnemy = true;
+                return true;
+            }
         }
         if(tempEnemy == false){
          //   System.out.println("h");
@@ -157,14 +178,18 @@ public class Spawner {
            if(tempObject.getID() != ID.Player){
                handler.object.remove(tempObject);
                i = 0;
-           }
-           
-            
-        }
-        
+           }  
+        }        
     }
-
-  
+    public boolean spawnUpgrade(){
+        boolean timerToSpawn = false;
+        
+        if(c.seconds == 5){
+            timerToSpawn = true;
+            c.seconds = 0;
+        }
+        return timerToSpawn;
+    }
 }   
     
     

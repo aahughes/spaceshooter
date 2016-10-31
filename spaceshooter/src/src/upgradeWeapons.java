@@ -8,69 +8,76 @@ package src;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Random;
 
 /**
  *
  * @author ralpoh
  */
-public class BasicLaser extends GameObject {
+public class upgradeWeapons extends GameObject {
     Handler handler;
     Clock c;
-    public BasicLaser(float x, float y, ID id,Handler handler) {
+    int whichWeapon;
+    int thisWeapon;
+    
+    public upgradeWeapons(float x, float y, ID id,Handler handler) {     
         super(x, y, id);
+       
         this.handler = handler;
-        c = new Clock();
-    }
-    @Override
-    public void tick() {
-         x += velX;
-        y += velY;
-        
         velY = 1;
-   
-        
+        c = new Clock();
+       // System.out.println(id);
+    }
+
+    @Override
+    public void tick() {      
+        x += velX;
+        y += velY;
         collision();
     }
 
     @Override
     public void render(Graphics g) {
-         g.setColor(Color.GRAY);
-        g.fillRect((int)x,(int)y,5,15);
+         
         
+        if(this.id == ID.UpgradeFastBeam){
+             g.setColor(Color.RED);
+        }
+        else if(this.id == ID.UpgradeShotGun){
+            g.setColor(Color.white);
+        }
+        else if(this.id == ID.UpgradeAirBurst){
+            g.setColor(Color.GREEN);
+        }
+         g.fillRect((int)x,(int)y,15,15);
+       
+        
+      
     }
 
     @Override
     public Rectangle getBounds() {
-         return new Rectangle((int)x,(int)y,5,15);  
+        return new Rectangle((int)x,(int)y,15,15);
     }
+
     @Override
     public void collision() {
         
         for(int i = 0; i < handler.object.size(); i++){
-            
-           
            GameObject tempPlayerObject;
            GameObject tempObject = handler.object.get(i);
-           
            if(tempObject.getID() == ID.Player){
               tempPlayerObject = tempObject;
-              
-           
-           
            if(tempObject.getID() == ID.Player){
                //collision code
-               
-              if(getBounds().intersects(tempObject.getBounds())){
-                  
+              if(getBounds().intersects(tempObject.getBounds())){                  
                   tempPlayerObject.collision();
-                   handler.removeObject(this);
+                  handler.removeObject(this);
+                  System.out.println("RIGHT HERE FAGGOT");
                     }
-                
-                }
-            }
-          outOfBounds();
+               }
+           }
         }
-        
     }
     private void outOfBounds(){
               if(x <= 0) handler.removeObject(this);
@@ -80,16 +87,11 @@ public class BasicLaser extends GameObject {
            
            
        }
-
     @Override
     public void action() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+    
 }
-        
-        
-    
-    
-    
-    
-

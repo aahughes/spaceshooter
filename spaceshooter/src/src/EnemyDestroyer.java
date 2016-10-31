@@ -75,32 +75,52 @@ public class EnemyDestroyer extends GameObject {
         for(int i = 0; i < handler.object.size(); i++){
            GameObject tempPlayerObject;
            GameObject tempObject = handler.object.get(i);
+           
            if(tempObject.getID() == ID.PlayerLaser){
               tempPlayerObject = tempObject;
-              
-           
-           
            if(tempObject.getID() == ID.PlayerLaser){
-               //collision code
-               
               if(getBounds().intersects(tempObject.getBounds())){
-                  
                   health--;
-                  
-                //   System.out.println(health);
-               }
-              if(health <= 3){
-                  render(g);
-              }
-                if(health <= 0){
-                handler.removeObject(this);
-                    }
+               }               
             }
         }
-           
-    }
-        
-        
+           ////////////////////////////////////////////////////////////////////////////////////////          
+           else if(tempObject.getID() == ID.ShotGun){
+              tempPlayerObject = tempObject;
+              if(tempObject.getID() == ID.ShotGun){
+              if(getBounds().intersects(tempObject.getBounds())){                 
+                  health--;
+               }
+              
+            }
+        }
+ ////////////////////////////////////////////////////////////////////////////////////////          
+           else if(tempObject.getID() == ID.AirBurst){
+              tempPlayerObject = tempObject;
+              if(tempObject.getID() == ID.AirBurst){
+              if(getBounds().intersects(tempObject.getBounds())){                 
+                  health--;
+               }
+            }
+        }
+  ////////////////////////////////////////////////////////////////////////////////// 
+            else if(tempObject.getID() == ID.FastBeam){
+              tempPlayerObject = tempObject;
+                if(tempObject.getID() == ID.FastBeam){
+               //collision code
+                if(getBounds().intersects(tempObject.getBounds())){
+                  health--;
+                }
+            }
+        }   
+           if(health <= 3){
+                  render(g);
+                }
+            if(health <= 0){
+                handler.removeObject(this);
+                HUD.score += 30;
+                }
+    }    
 }
 
     @Override

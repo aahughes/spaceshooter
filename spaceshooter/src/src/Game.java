@@ -7,9 +7,12 @@ package src;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -27,7 +30,7 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
     // test for randoms
     Random r = new Random();
-    
+    Canvas buffer;
     // heads up display, health and shit
     private HUD hud;
     // spawner for levels
@@ -37,7 +40,8 @@ public class Game extends Canvas implements Runnable {
     private int minutes;
     private int hours;
     Clock c;
-    
+    test test;
+    boolean isNew;
     // reference to GameWindow for method use
     private GameWindow window;
     
@@ -54,15 +58,17 @@ public class Game extends Canvas implements Runnable {
         minutes = 0;
         hours = 0;
         c = new Clock();
-        
+        isNew = true;
         this.window = window;
         hud.score = 0;
-        // test
-             
-                    
-         handler.addObject(new Player(WIDTH/2-32,HEIGHT/2-32,ID.Player,handler,hud));
-       
-        // test level 1        
+        
+        // player           
+        handler.addObject(new Player(WIDTH/2-32,HEIGHT/2-32,ID.Player,handler,hud));
+         
+        
+       // test
+        test = new test();
+        
        
     }
     
@@ -130,20 +136,36 @@ public class Game extends Canvas implements Runnable {
     }
     private void tick(){
         handler.tick();
-        spawner.tick();
+        
         hud.tick();
         
-        if(hud.noHealth){
+        isNew = spawner.presentEnemy();
+        
+        if(hud.noHealth){ 
             gameOver();
-            
             //debug
             System.out.println("game over");
-            
             stop();
         }
-        
+        if(isNew == false){
+            test.action = false;
+            boolean cont = false;
+            
+            while(cont == false){
+                
+                cont = test.run();
+                running = false;
+                if(cont == true)
+                 {
+                System.out.println("here");
+                    running = true;
+                    spawner.stillEnemy = false;         
+                }
+            }
+            
+        }
         c.tick();
-        
+        spawner.tick();
     }
     private void render(){
         // main color method for rendering to window, graphics
@@ -179,5 +201,7 @@ public class Game extends Canvas implements Runnable {
     public void gameOver(){
         window.openGameOver();
     }
-        
+    public void levelWindow(){
+       
+    }  
 }
