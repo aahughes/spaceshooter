@@ -25,7 +25,7 @@ public class GameWindow extends JFrame{
     OptionsMenu options;
     HUD hud;
     GameOverScreen gameover;
-   test test;
+   LevelWindow test;
     public GameWindow(int width, int height, String title){
         
         this.setPreferredSize(new Dimension(width,height));
@@ -49,7 +49,7 @@ public class GameWindow extends JFrame{
         menu.setVisible(true);
        
         gameover = new GameOverScreen(this);
-        test = new test();
+        test = new LevelWindow();
     }
     
     public void startGame(){

@@ -10,11 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class test {
+public class LevelWindow {
 boolean action = false;
 JFrame parent;
 JButton button;
-    public test(){
+    public LevelWindow(){
         
         
         button = new JButton();

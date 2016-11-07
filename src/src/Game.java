@@ -41,7 +41,7 @@ public class Game extends Canvas implements Runnable {
     private int minutes;
     private int hours;
     Clock c;
-    test test;
+    LevelWindow test;
     boolean isNew;
     // reference to GameWindow for method use
     private GameWindow window;
@@ -69,7 +69,7 @@ public class Game extends Canvas implements Runnable {
          
         
        // test
-        test = new test();
+        test = new LevelWindow();
         
        
     }
@@ -140,8 +140,8 @@ public class Game extends Canvas implements Runnable {
         handler.tick();
         
         hud.tick();
-        
         isNew = spawner.presentEnemy();
+        
         
         if(hud.noHealth){ 
             gameOver();
@@ -152,16 +152,24 @@ public class Game extends Canvas implements Runnable {
         if(isNew == false){
             test.action = false;
             boolean cont = false;
-            
+            spawner.clearScreen();
+            render();
             while(cont == false){
                 
                 cont = test.run();
                 running = false;
                 if(cont == true)
                  {
-                System.out.println("here");
+//                for(GameObject tempObject : handler.object){
+//                    if(tempObject.getID() == ID.Player){
+//                        tempObject.setX(WIDTH/2-32);
+//                        tempObject.setY(HEIGHT/2-32);
+//                      //  System.out.println("here");
+//                    }
+//                }
+                     
                     running = true;
-                    spawner.stillEnemy = false;         
+                    spawner.stillEnemy = false;
                 }
             }
             

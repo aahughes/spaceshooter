@@ -31,6 +31,17 @@ public class upgradeWeapons extends GameObject {
         velY = 1;
         c = new Clock();
        // System.out.println(id);
+        if(this.id == ID.UpgradeFastBeam){
+        	img = new JFrame().getToolkit().getImage("9.jpg");
+        }
+        else if(this.id == ID.UpgradeShotGun){
+//            g.setColor(Color.BLUE);
+        	img = new JFrame().getToolkit().getImage("7.jpg");
+       	 	
+        }
+        else if(this.id == ID.UpgradeAirBurst){
+        	img = new JFrame().getToolkit().getImage("8.jpg");
+        }
     }
 
     @Override
@@ -44,17 +55,7 @@ public class upgradeWeapons extends GameObject {
     public void render(Graphics g) {
          
         
-        if(this.id == ID.UpgradeFastBeam){
-        	img = new JFrame().getToolkit().getImage("9.jpg");
-        }
-        else if(this.id == ID.UpgradeShotGun){
-//            g.setColor(Color.BLUE);
-        	img = new JFrame().getToolkit().getImage("7.jpg");
-       	 	
-        }
-        else if(this.id == ID.UpgradeAirBurst){
-        	img = new JFrame().getToolkit().getImage("8.jpg");
-        }
+        
          //g.fillRect((int)x,(int)y,15,15);
          g.drawImage(img, (int)x, (int)y, (int)15, (int)15, null);
         

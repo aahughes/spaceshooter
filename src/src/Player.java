@@ -61,7 +61,8 @@ public class Player extends GameObject{
     @Override
    public void collision(){
        
-        for (GameObject tempObject : handler.object) {
+        for (int i = 0; i < handler.object.size(); i++) {
+            GameObject tempObject = handler.object.get(i);
             if(tempObject.getID() == ID.BasicFighter){
                 //collision code
                
