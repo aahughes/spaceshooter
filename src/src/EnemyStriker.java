@@ -53,7 +53,7 @@ public class EnemyStriker extends GameObject {
              velY = 1;
          }
     }
-
+ 
     @Override
     public void tick() {
         c.tick();
