@@ -42,7 +42,7 @@ public class Player extends GameObject{
         weapon[2] = 'c';
         weapon[3] = 'd';
         weapon[4] = 'e';
-        img = new JFrame().getToolkit().getImage("1.jpg");
+        img = new JFrame().getToolkit().getImage("1.png");
         currentWeapon = 'a';
     }
 

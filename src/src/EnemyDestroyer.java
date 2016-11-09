@@ -31,7 +31,7 @@ public class EnemyDestroyer extends GameObject {
         velX = 1;
         c = new Clock();
         health = 5;
-        img = new JFrame().getToolkit().getImage("12.jpg");
+        img = new JFrame().getToolkit().getImage("12.png");
     }
 
     @Override
@@ -65,7 +65,7 @@ public class EnemyDestroyer extends GameObject {
         if(health <= 3){
 //            g.setColor(Color.RED);
 //            g.fillRect((int)x,(int)y,40,64);
-        	img = new JFrame().getToolkit().getImage("13.jpg");
+        	img = new JFrame().getToolkit().getImage("13.png");
        	 	g.drawImage(img, (int)x, (int)y, (int)40, (int)64, null);
         }
         
