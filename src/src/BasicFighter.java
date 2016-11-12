@@ -28,7 +28,7 @@ public class BasicFighter extends GameObject {
         this.handler = handler;
         velX = 1;
         c = new Clock();
-        img = new JFrame().getToolkit().getImage("2.jpg");
+        img = new JFrame().getToolkit().getImage("2.png");
         
     }
 
