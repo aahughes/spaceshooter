@@ -5,6 +5,11 @@
  */
 package src;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
 /**
  *
  * @author aah5307
@@ -12,13 +17,19 @@ package src;
 public class StartMenu extends javax.swing.JPanel {
     
     GameWindow game;
-
+    ImageIcon logo;
+    ImageIcon start;
+    ImageIcon options;
+    
     /**
      * Creates new form StartMenu
      * @param game
      */
     public StartMenu(GameWindow game) {
         this.game = game;
+        this.logo = new ImageIcon("logo.png","Star Shooter Alpha");
+        this.start = new ImageIcon("start.png","Start the game!");
+        this.options = new ImageIcon("options.png","Open options menu");
         
         initComponents();
     }
@@ -32,15 +43,16 @@ public class StartMenu extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        this.setSize(800, 600);
         jLabel1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
         optionsButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Impact", 1, 72)); // NOI18N
-        jLabel1.setText("StarShooter pre-alpha");
+       
+        jLabel1.setIcon(logo);
 
         startButton.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
-        startButton.setText("START");
+        startButton.setIcon(start);
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
@@ -48,7 +60,7 @@ public class StartMenu extends javax.swing.JPanel {
         });
 
         optionsButton.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
-        optionsButton.setText("OPTIONS");
+        optionsButton.setIcon(options);
         optionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 optionsButtonActionPerformed(evt);
@@ -60,7 +72,7 @@ public class StartMenu extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -68,7 +80,7 @@ public class StartMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(optionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(269, 269, 269))
+                .addGap(20, 20, 320))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

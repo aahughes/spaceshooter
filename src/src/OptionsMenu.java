@@ -5,6 +5,8 @@
  */
 package src;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Allison
@@ -12,12 +14,16 @@ package src;
 public class OptionsMenu extends javax.swing.JPanel {
 
     private GameWindow game;
+    ImageIcon options;
+    ImageIcon start;
     
     /**
      * Creates new form OptionsMenu
      */
     public OptionsMenu(GameWindow game) {
         this.game = game;
+        this.options = new ImageIcon("options.png");
+        this.start = new ImageIcon("start.png");
         
         initComponents();
     }
@@ -34,11 +40,9 @@ public class OptionsMenu extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Impact", 1, 48)); // NOI18N
-        jLabel1.setText("Options");
+        jLabel1.setIcon(options);
 
-        startButton.setFont(new java.awt.Font("Impact", 0, 48)); // NOI18N
-        startButton.setText("START");
+        startButton.setIcon(start);
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
